@@ -7,5 +7,5 @@ kubectl apply -f ns-infrastructure.yaml
 # Install initial ArgoCD
 helm install --set configs.params."server\.insecure"=true argo-cd argo-cd/argo-cd -n infrastructure
 # Add git repo to ArgoCD
-TODO
+kubectl apply -f initial.yaml
 ```
