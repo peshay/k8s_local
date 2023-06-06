@@ -10,7 +10,7 @@ spec:
     server: https://kubernetes.default.svc
   project: default
   source:
-    chart: rancher-server
+    chart: rancher
     repoURL: https://releases.rancher.com/server-charts/stable
     targetRevision: v2.7.4
     helm:
