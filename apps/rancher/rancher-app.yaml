@@ -11,15 +11,14 @@ spec:
   project: default
   source:
     chart: rancher
-    repoURL: https://releases.rancher.com/server-charts/stable
-    targetRevision: v2.7.4
+    repoURL: https://releases.rancher.com/server-charts/latest
+    targetRevision: v2.7.5-rc4
     helm:
       parameters:
       - name: hostname
         value: rancher.localhost
       - name: bootstrapPassword
         value: admin
-      kubeVersion: < 1.27.0-0
   syncPolicy:
     retry:
       backoff:
