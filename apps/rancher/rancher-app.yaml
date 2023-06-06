@@ -12,7 +12,7 @@ spec:
   source:
     chart: rancher-server
     repoURL: https://releases.rancher.com/server-charts/stable
-    targetRevision: 2.7.4
+    targetRevision: v2.7.4
     helm:
       parameters:
       - name: hostname
