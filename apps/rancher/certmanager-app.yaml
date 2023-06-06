@@ -4,6 +4,8 @@ kind: Application
 metadata:
   name: cert-manager
   namespace: infrastructure
+  annotations:
+    argocd.argoproj.io/sync-wave: "-1"    
 spec:
   destination:
     namespace: cattle-system
