@@ -7,7 +7,9 @@ metadata:
   - resources-finalizer.argocd.argoproj.io  
 spec:
   syncPolicy:
-    automated: {}
+    automated:
+      prune: true
+      selfHeal: true
   destination:
     namespace: infrastructure
     server: {{ .Values.spec.destination.server }}
