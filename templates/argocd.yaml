@@ -5,6 +5,8 @@ metadata:
   namespace: infrastructure
   finalizers:
   - resources-finalizer.argocd.argoproj.io  
+  annotations:
+    argocd.argoproj.io/sync-wave: "-5"  
 spec:
   syncPolicy:
     automated:
