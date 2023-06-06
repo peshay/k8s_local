@@ -19,8 +19,8 @@ spec:
         value: rancher.localhost
       - name: bootstrapPassword
         value: admin
-      data: |
-        kubeVersion: < 1.27.0-0
+      - name: kubeVersion
+        value: < 1.27.0-0
   syncPolicy:
     retry:
       backoff:
