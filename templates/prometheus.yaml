@@ -11,9 +11,9 @@ spec:
       prune: true
       selfHeal: true
   destination:
-    namespace: monitoring
+    namespace: infrastructure
     server: {{ .Values.spec.destination.server }}
-  project: observability
+  project: default
   source:
     path: apps/prometheus
     repoURL: {{ .Values.spec.source.repoURL }}
