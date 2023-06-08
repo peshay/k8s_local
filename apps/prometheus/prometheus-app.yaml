@@ -1,0 +1,40 @@
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: prometheus-app
+  namespace: monitoring
+spec:
+  destination:
+    namespace: monitoring
+    server: https://kubernetes.default.svc
+  project: default
+  source:
+    chart: prometheus
+    repoURL: https://prometheus-community.github.io/helm-charts
+    targetRevision: 22.6.2
+    helm:
+      values: |
+        server:
+          ingress:
+            ## If true, Prometheus server Ingress will be created
+            ##
+            enabled: true
+
+            ## Prometheus server Ingress hostnames
+            ## Must be provided if Ingress is enabled
+            ##
+            hosts:
+              - prometheus.localhost
+  syncPolicy:
+    retry:
+      backoff:
+        duration: 5s
+        factor: 2
+        maxDuration: 3m0s
+      limit: 5
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+    - CreateNamespace=true
