@@ -14,8 +14,17 @@ spec:
     repoURL: https://prometheus-community.github.io/helm-charts
     targetRevision: 22.6.2
     helm:
-      valueFiles: 
-      - prometheus-values.yaml
+      values: |
+        ingress:
+          ## If true, Prometheus server Ingress will be created
+          ##
+          enabled: true
+
+          ## Prometheus server Ingress hostnames
+          ## Must be provided if Ingress is enabled
+          ##
+          hosts:
+            - prometheus.localhost
     retry:
       backoff:
         duration: 5s
