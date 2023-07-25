@@ -3,7 +3,7 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   name: rancher-server
-  namespace: infrastructure
+  namespace: argocd
 spec:
   destination:
     namespace: cattle-system
@@ -16,7 +16,7 @@ spec:
     helm:
       parameters:
       - name: hostname
-        value: rancher.localhost
+        value: rancher.ahu
       - name: bootstrapPassword
         value: admin
   syncPolicy:

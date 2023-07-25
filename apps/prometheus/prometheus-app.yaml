@@ -3,10 +3,10 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   name: prometheus-app
-  namespace: infrastructure
+  namespace: argocd
 spec:
   destination:
-    namespace: infrastructure
+    namespace: prometheus
     server: https://kubernetes.default.svc
   project: default
   source:
@@ -24,4 +24,7 @@ spec:
           ## Must be provided if Ingress is enabled
           ##
           hosts:
-            - prometheus.localhost
+            - prometheus.ahu
+  syncPolicy:
+    syncOptions:
+    - CreateNamespace=true            

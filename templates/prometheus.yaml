@@ -2,7 +2,7 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   name: prometheus
-  namespace: infrastructure
+  namespace: argocd
   finalizers:
   - resources-finalizer.argocd.argoproj.io
 spec:
@@ -11,7 +11,7 @@ spec:
       prune: true
       selfHeal: true
   destination:
-    namespace: infrastructure
+    namespace: prometheus
     server: {{ .Values.spec.destination.server }}
   project: default
   source:

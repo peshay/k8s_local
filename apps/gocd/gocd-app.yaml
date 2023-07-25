@@ -3,13 +3,16 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   name: gocd-app
-  namespace: infrastructure
+  namespace: argocd
 spec:
   destination:
-    namespace: homelab
+    namespace: gocd
     server: https://kubernetes.default.svc
   project: default
   source:
     chart: gocd
     repoURL: https://gocd.github.io/helm-chart
     targetRevision: 2.1.8
+  syncPolicy:
+    syncOptions:
+    - CreateNamespace=true
