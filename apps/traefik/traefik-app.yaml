@@ -14,7 +14,16 @@ spec:
     repoURL: https://traefik.github.io/charts
     targetRevision: v23.2.0
     helm:
-      values: |    
+      values: |
+        ports:
+          websecure:
+            ## -- Enable this entrypoint as a default entrypoint. When a service doesn't explicitly set an entrypoint it will only use this entrypoint.
+            # asDefault: true
+            port: 8443
+            # hostPort: 8443
+            # containerPort: 8443
+            expose: true
+            exposedPort: 443          
         metrics:
           prometheus: null
         # Create an IngressRoute for the dashboard
