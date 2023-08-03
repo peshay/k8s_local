@@ -17,6 +17,8 @@ spec:
       values: |
         ui:
           enabled: true
+        dataStorage: 
+          storageClass: nfs-client
   syncPolicy:
     retry:
       backoff:
