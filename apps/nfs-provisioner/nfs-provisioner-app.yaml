@@ -1,0 +1,32 @@
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: nfs-provisioner-app
+  namespace: argocd
+spec:
+  destination:
+    namespace: nfs-provisioner
+    server: https://kubernetes.default.svc
+  project: default
+  source:
+    chart: nfs-subdir-external-provisioner
+    repoURL: https://kubernetes-sigs.github.io/nfs-subdir-external-provisioner
+    targetRevision: nfs-subdir-external-provisioner-4.0.18
+    helm:
+      values: |
+        nfs
+          server: 192.168.178.151
+          path: /mnt/lv.services
+  syncPolicy:
+    retry:
+      backoff:
+        duration: 5s
+        factor: 2
+        maxDuration: 3m0s
+      limit: 5
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+    - CreateNamespace=true
