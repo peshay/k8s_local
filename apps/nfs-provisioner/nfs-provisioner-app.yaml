@@ -14,10 +14,11 @@ spec:
     repoURL: https://kubernetes-sigs.github.io/nfs-subdir-external-provisioner
     targetRevision: 4.0.18
     helm:
-      values: |
-        nfs
-          server: 192.168.178.151
-          path: /mnt/lv.services
+      parameters:
+      - name: nfs.server
+        value: "192.168.178.151"
+      - name: nfs.path
+        value: "/mnt/lv.services"
   syncPolicy:
     retry:
       backoff:
