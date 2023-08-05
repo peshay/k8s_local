@@ -1,0 +1,23 @@
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: vault-ingress
+  namespace: vault
+spec:
+  entryPoints:
+    - websecure
+  routes:
+    - kind: Rule
+      match: Host(`vault-ui.ahu`)
+      priority: 10
+      services:
+        - name: vault-app-ui
+          port: 8200
+    - kind: Rule
+      match: Host(`vault.ahu`)
+      priority: 10
+      services:
+        - name: vault-app
+          port: 8200          
+  tls:
+    certResolver: default
